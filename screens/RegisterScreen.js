@@ -1,5 +1,5 @@
 import React , {useState,useEffect} from 'react'
-import { ScrollView , KeyboardAvoidingView ,Alert} from 'react-native';
+import { ScrollView , KeyboardAvoidingView ,Alert,useWindowDimensions} from 'react-native';
 import { StyleSheet, Text, View,TextInput } from 'react-native';
 import {useDispatch} from 'react-redux';
 import { Input , Button} from 'react-native-elements';
@@ -7,6 +7,7 @@ import { signup } from '../store/actions/auth';
 import { ActivityIndicator } from 'react-native';
 
 const RegisterScreen = (props) => {
+    const window = useWindowDimensions();
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [error,setError] = useState();
@@ -36,7 +37,7 @@ const RegisterScreen = (props) => {
             behavior="padding"
             keyboardVerticalOffset={50}
         >
-            <View style={{margin:80}}>
+            <View style={{margin:window.height < 600 ? 30 : 80}}>
             </View>
 
             <View style={{margin:20}}>
